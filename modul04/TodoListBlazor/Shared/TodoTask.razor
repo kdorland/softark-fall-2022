@@ -1,0 +1,19 @@
+@using TodoListBlazor.Data;
+@inject TodoListService todoService
+
+<input id=@Task.Id type="checkbox" checked=@Task.Done @onchange="HandleDone"/>
+<label htmlFor=@Task.Id>@Task.Text</label>
+
+@code {
+    [Parameter]
+    public TaskData Task { get; set; }
+
+    private void HandleDone(ChangeEventArgs e)
+    {
+        if (e.Value != null && e.Value is bool) {
+            bool newValue = (bool) e.Value;
+            Task.Done = newValue;
+            todoService.PutTaskData(Task);
+        }
+    }
+}

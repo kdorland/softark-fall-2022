@@ -1,0 +1,17 @@
+@using TodoListBlazor.Data;
+@inject TodoListService todoService
+
+<input type="input" id="taskText" @bind-value="taskText"/>
+<button id="addTaskButton" type="button" @onclick="PostNewTask" >Add Task</button>
+
+@code {
+    private string? taskText;
+    private void PostNewTask()
+    {
+        if (taskText is null)
+        {
+            return;
+        }
+        todoService.PostTask(new TaskData() { Text = taskText, Done = false });
+    }
+}
