@@ -9,7 +9,6 @@ public class TodoListService
     private readonly HttpClient http;
     private readonly IConfiguration configuration;
     private readonly string baseAPI = "";
-
     public event Action RefreshRequired;
 
     public TodoListService(HttpClient http, IConfiguration configuration) {
@@ -46,5 +45,4 @@ public class TodoListService
     }
 
     private record TaskDataAPI(string text, bool done);
-    
 }
