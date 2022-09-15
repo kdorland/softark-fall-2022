@@ -27,15 +27,17 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 // Tilføj DataService så den kan bruges i endpoints
 builder.Services.AddScoped<DataService>();
 
-// Her kan man styrer hvordan den laver JSON.
+// Dette kode kan bruges til at fjerne "cykler" i JSON objekterne.
+/*
 builder.Services.Configure<JsonOptions>(options =>
 {
-    // Super vigtig option! Den gør, at programmet ikke smider fejl
-    // når man returnerer JSON med objekter, der refererer til hinanden.
+    // Her kan man fjerne fejl der opstår, når man returnerer JSON med objekter,
+    // der refererer til hinanden i en cykel.
     // (altså dobbelrettede associeringer)
     options.SerializerOptions.ReferenceHandler = 
         System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
 });
+*/
 
 var app = builder.Build();
 
