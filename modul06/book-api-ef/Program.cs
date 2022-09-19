@@ -58,7 +58,9 @@ app.Use(async (context, next) =>
     await next(context);
 });
 
-app.MapGet("/", ( DataService service) =>
+
+// DataService fås via "Dependency Injection" (DI)
+app.MapGet("/", (DataService service) =>
 {
     return new { message = "Hello World!" };
 });
