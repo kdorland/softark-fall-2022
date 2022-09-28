@@ -21,9 +21,6 @@ builder.Services.AddCors(options =>
 builder.Services.AddDbContext<BookContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("ContextSQLite")));
 
-// Viser flotte fejlbeskeder i browseren hvis der kommer fejl fra databasen
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-
 // Tilføj DataService så den kan bruges i endpoints
 builder.Services.AddScoped<DataService>();
 
