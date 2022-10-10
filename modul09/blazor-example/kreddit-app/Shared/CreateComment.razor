@@ -1,0 +1,27 @@
+@using kreddit_app.Data;
+@inject ApiService apiService
+
+<div>
+    <br/>
+    <h3>Write a comment</h3>
+    <input placeholder="Content" type="input" id="content" @bind-value="content"/>
+    <button id="createPostButton" type="button" @onclick="CreateNewComment">Post comment</button>
+</div>
+
+@code {
+
+    // PostId is passed in from the parent component. See how in PostItem.razor.
+    [Parameter]
+    public int PostId { get; set; }
+    private string? content;
+    private async void CreateNewComment()
+    {
+        if (content == null)
+        {
+            return;
+        }
+        // TODO: Provide list of users from dropdown, or maybe just convert
+        // from username to UserId
+        await apiService.CreateComment(content, PostId, 2); // UserId: 2
+    }
+}
