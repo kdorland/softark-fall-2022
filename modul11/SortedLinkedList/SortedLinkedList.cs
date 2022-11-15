@@ -16,7 +16,25 @@
 
         public void Add(User user)
         {
-            // TODO: Implement this method
+            if (first == null) {
+                Node newNode = new Node(user, null);
+                first = newNode;
+            } else {
+                Node node = first;
+                Node previous = null;
+
+                while (node != null && node.Data.Name.CompareTo(user.Name) < 0) {
+                    previous = node;
+                    node = node.Next;
+                }
+
+                Node newNode = new Node(user, node);
+                if (node == first) {
+                    first = newNode;
+                } else {
+                    previous.Next = newNode;
+                }
+            }
         }
 
         public User RemoveFirst()
