@@ -47,7 +47,7 @@ namespace SearchMethods.Tests
         {
             Search.InitSortedArray(
                 new int[] { 2, 4, 8, 10, 15, 17, -1, -1, -1, -1 }, 
-                5
+                6
             );
 
             int[] newArray = Search.InsertSorted(11);
